@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Robert Ochoa"
+	xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+	<description>A custom set of rules to check for a WPized WordPress project</description>
+	<file>.</file>
+	<config name="testVersion" value="6.0-" />
+	<config name="minimum_supported_wp_version" value="6.0" />
+	<arg name="extensions" value="php" />
+	<arg name="ignore" value="*.js,*.css" />
+	<arg value="-colors" />
+	<arg value="ns" />
+	<exclude-pattern>/vendor/</exclude-pattern>
+	<exclude-pattern>/node_modules/</exclude-pattern>
+	<exclude-pattern>/.github/</exclude-pattern>
+
+	<rule ref="WordPress">
+		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
+		<exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen" />
+		<exclude name="Squiz.Commenting.FileComment.WrongStyle" />
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash" />
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized" />
+	</rule>
+	<rule ref="Generic.PHP.Syntax" />
+	<rule ref="PHPCompatibilityWP" />
+</ruleset>
