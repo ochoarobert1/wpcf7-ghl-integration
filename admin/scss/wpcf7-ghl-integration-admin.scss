@@ -1,0 +1,44 @@
+.toplevel_page_wpcf7 {
+  #wpfooter {
+    display: none;
+  }
+}
+
+.wpcf7-ghl-main-fields {
+  line-height: 1.5;
+  margin: 0.6em 0 0.4em;
+
+  .code {
+    margin-inline: 0.4rem;
+  }
+
+  .used {
+    color: #000 !important;
+    font-weight: 600 !important;
+  }
+}
+
+.wpcf7-ghl-form-mapper {
+  margin-block-start: 1rem;
+}
+
+.form-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-block-end: 1rem;
+
+  .form-group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-flow: column;
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+  }
+}

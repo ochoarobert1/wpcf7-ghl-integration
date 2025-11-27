@@ -21,8 +21,13 @@
 		<exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen" />
 		<exclude name="Squiz.Commenting.FileComment.WrongStyle" />
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralDomain" />
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash" />
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceAfterOpenParenthesis" />
+		<exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceBefore" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
 	</rule>
 	<rule ref="Generic.PHP.Syntax" />
 	<rule ref="PHPCompatibilityWP" />

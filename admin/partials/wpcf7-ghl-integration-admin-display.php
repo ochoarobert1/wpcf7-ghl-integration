@@ -18,11 +18,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<form id="contactForm7GHL" method="post">
 		<table class="form-table">
 			<tr valign="top">
-				<th scope="row">API Key</th>
-				<td><input type="text" name="wpcf7_ghl_integration_apikey" size="90" value="<?php echo esc_attr( get_option( 'wpcf7_ghl_integration_apikey' ) ); ?>" /></td>
+				<th scope="row">
+					<?php esc_html_e( 'API Key', WPCF7_GHL_TEXT_DOMAIN ); ?>
+				</th>
+				<td>
+					<input type="text" name="wpcf7_ghl_integration_apikey" size="90" value="<?php echo esc_attr( get_option( 'wpcf7_ghl_integration_apikey' ) ); ?>" />
+					<br/>
+					<small><?php esc_html_e( 'Enter GoHighLevel API Key. You can find it in your GoHighLevel account settings.', WPCF7_GHL_TEXT_DOMAIN ); ?></small>
+				</td>
 			</tr>
 		</table>
-
-		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
+		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e( 'Save Changes', WPCF7_GHL_TEXT_DOMAIN ); ?>"></p>
 	</form>
 </div>

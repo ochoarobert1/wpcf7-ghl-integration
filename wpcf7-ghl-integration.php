@@ -24,38 +24,37 @@
  * Requires Plugins: contact-form-7
  */
 
-if (! defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define('WPCF7_GHL_VERSION', '1.0.0');
+define( 'WPCF7_GHL_VERSION', '1.0.0' );
 
-define('WPCF7_GHL_TEXT_DOMAIN', 'wpcf7-ghl-integration');
+define( 'WPCF7_GHL_TEXT_DOMAIN', 'wpcf7-ghl-integration' );
 
-define('WPCF7_GHL_PLUGIN', __FILE__);
+define( 'WPCF7_GHL_PLUGIN', __FILE__ );
 
-define('WPCF7_GHL_PLUGIN_BASENAME', plugin_basename(WPCF7_GHL_PLUGIN));
+define( 'WPCF7_GHL_PLUGIN_BASENAME', plugin_basename( WPCF7_GHL_PLUGIN ) );
 
-define('WPCF7_GHL_PLUGIN_NAME', trim(dirname(WPCF7_GHL_PLUGIN_BASENAME), '/'));
+define( 'WPCF7_GHL_PLUGIN_NAME', trim( dirname( WPCF7_GHL_PLUGIN_BASENAME ), '/' ) );
 
-define('WPCF7_GHL_PLUGIN_DIR', untrailingslashit(dirname(WPCF7_GHL_PLUGIN)));
+define( 'WPCF7_GHL_PLUGIN_DIR', untrailingslashit( dirname( WPCF7_GHL_PLUGIN ) ) );
 
-if (! class_exists('WPCF7_GHL_Integration')) {
+if ( ! class_exists( 'WPCF7_GHL_Integration' ) ) {
 	/**
 	 * WPCF7_GHL_Integration
 	 */
-	class WPCF7_GHL_Integration
-	{
+	class WPCF7_GHL_Integration {
+
 
 		/**
 		 * Method __construct
 		 *
 		 * @return void
 		 */
-		public function __construct()
-		{
-			add_action('init', array($this, 'load_textdomain'));
-			add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
+		public function __construct() {
+			add_action( 'init', array( $this, 'load_textdomain' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 
 		/**
@@ -63,20 +62,32 @@ if (! class_exists('WPCF7_GHL_Integration')) {
 		 *
 		 * @return void
 		 */
-		public function enqueue_scripts()
-		{
+		public function enqueue_scripts() {
+			// Load on all admin pages for now (debug)
+			$screen = get_current_screen();
+			if ( ! is_admin() ) {
+				return;
+			}
+
+			wp_enqueue_style(
+				'wpcf7-ghl-admin',
+				plugins_url( '/admin/css/wpcf7-ghl-integration-admin.css', __FILE__ ),
+				array(),
+				WPCF7_GHL_VERSION
+			);
+
 			wp_enqueue_script(
 				'wpcf7-ghl-sweetalert2',
 				'https://cdn.jsdelivr.net/npm/sweetalert2@11',
-				array('jquery'),
+				array( 'jquery' ),
 				WPCF7_GHL_VERSION,
 				true
 			);
 
 			wp_enqueue_script(
 				'wpcf7-ghl-admin',
-				plugins_url('/admin/js/wpcf7-ghl-integration-admin.js', __FILE__),
-				array('jquery', 'wpcf7-ghl-sweetalert2'),
+				plugins_url( '/admin/js/wpcf7-ghl-integration-admin.js', __FILE__ ),
+				array( 'jquery', 'wpcf7-ghl-sweetalert2' ),
 				WPCF7_GHL_VERSION,
 				true
 			);
@@ -85,8 +96,8 @@ if (! class_exists('WPCF7_GHL_Integration')) {
 				'wpcf7-ghl-admin',
 				'wpcf7ghl',
 				array(
-					'ajax_url' => admin_url('admin-ajax.php'),
-					'nonce' => wp_create_nonce('wpcf7ghl_nonce'),
+					'ajax_url' => admin_url( 'admin-ajax.php' ),
+					'nonce' => wp_create_nonce( 'wpcf7ghl_nonce' ),
 				)
 			);
 		}
@@ -96,12 +107,11 @@ if (! class_exists('WPCF7_GHL_Integration')) {
 		 *
 		 * @return void
 		 */
-		public function load_textdomain()
-		{
+		public function load_textdomain() {
 			load_plugin_textdomain(
 				WPCF7_GHL_TEXT_DOMAIN,
 				false,
-				dirname(plugin_basename(__FILE__)) . '/languages/'
+				dirname( plugin_basename( __FILE__ ) ) . '/languages/'
 			);
 		}
 	}
